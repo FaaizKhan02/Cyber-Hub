@@ -39,13 +39,13 @@
    ```bash
    git clone https://github.com/FaaizKhan02/Cyber-Hub.git
 
-2. **In Terminal**:
+2. **Terminal Commands**:
    ```bash
    npm install
 
    npm start
 
-2. **Results On Browser**:
+2. **Results**:
    ```bash
    Open http://localhost:3000 in your browser.
 ---------------------------------------------------------------------------------------------------------------------------
