@@ -39,7 +39,7 @@
    ```bash
    git clone https://github.com/FaaizKhan02/Cyber-Hub.git
 
-2. **USE NPM**:
+2. **In Terminal**:
    ```bash
    npm install
 
