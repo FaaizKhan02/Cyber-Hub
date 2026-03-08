@@ -38,13 +38,14 @@
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/FaaizKhan02/Cyber-Hub.git
-
+   -npm install 
    npm install
    npm start
+   -To see in browser
    Open http://localhost:3000 in your browser.
 
 ---------------------------------------------------------------------------------------------------------------------------
 🤝 Contact
-Creator: Faaiz Khan
-Connect: LinkedIn | GitHub | Email
+Creator: Faaiz Khan ,
+Connect: LinkedIn | GitHub | Email ,
 Disclaimer: This site is for educational purposes only.
