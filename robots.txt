@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cyberattackhub.netlify.app/sitemap.xml

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cyber Attack Knowledge Hub – Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050714;
+      --card: rgba(18, 23, 48, 0.96);
+      --accent: #5d7bff;
+      --accent-alt: #36e4c2;
+      --text: #f6f7ff;
+      --muted: #9ca3c7;
+      --danger: #ff4b6a;
+      --warning: #ffb74d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: "Inter", sans-serif;
+      background: radial-gradient(circle at top left, rgba(91, 142, 255, 0.25), transparent 50%),
+                  radial-gradient(circle at bottom right, rgba(91, 255, 214, 0.2), transparent 50%),
+                  var(--bg);
+      color: var(--text);
+      overflow: hidden;
+      height: 100%;
+    }
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      padding: 2rem 3rem;
+      overflow-y: auto;
+    }
+    .slide.active {
+      display: flex;
+    }
+    .slide h1 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--accent-alt); }
+    .slide h2 { font-size: 1.35rem; margin: 1rem 0 0.5rem; }
+    .slide h3 { font-size: 1.1rem; margin: 0.75rem 0 0.35rem; }
+    .slide p, .slide li { font-size: 0.95rem; line-height: 1.5; color: var(--muted); }
+    .slide ul, .slide ol { margin-left: 1.5rem; margin-top: 0.5rem; }
+    .slide li + li { margin-top: 0.25rem; }
+    .slide table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+    .slide th, .slide td { padding: 0.4rem 0.5rem; border: 1px solid rgba(148, 163, 255, 0.3); text-align: left; }
+    .slide th { background: rgba(15, 23, 42, 0.9); color: var(--text); }
+    .slide .card { background: var(--card); border-radius: 12px; padding: 1rem 1.25rem; margin: 0.5rem 0; border: 1px solid rgba(148, 163, 255, 0.35); }
+    .slide .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .slide .badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 999px; font-size: 0.75rem; margin-right: 0.25rem; }
+    .slide .badge-critical { background: rgba(127, 29, 29, 0.9); color: #fee2e2; }
+    .slide .badge-high { background: rgba(120, 53, 15, 0.92); color: #fef3c7; }
+    .slide .badge-medium { background: rgba(12, 74, 110, 0.92); color: #e0f2fe; }
+    .slide .subtitle { font-size: 1rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .slide .nav-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      background: rgba(6, 10, 28, 0.95);
+      border-top: 1px solid rgba(148, 163, 255, 0.2);
+      z-index: 100;
+    }
+    .slide .nav-bar button {
+      background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+      color: #050714;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .slide .nav-bar button:hover { opacity: 0.9; }
+    .slide .nav-bar button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .slide .slide-num { font-size: 0.85rem; color: var(--muted); }
+    @media (max-width: 768px) {
+      .slide { padding: 1.5rem 1.25rem; }
+      .slide .two-col { grid-template-columns: 1fr; }
+      .slide table { font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <!-- Slide 1: Title -->
+    <section class="slide active" data-slide="1">
+      <h1>Cyber Attack Knowledge Hub</h1>
+      <p class="subtitle">Understand Cyber Attacks from A to Z</p>
+      <p style="margin-top: 2rem;">A beginner-friendly guide covering what attacks are, who does them, how they work, impact, and how organisations defend themselves.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">Use ← → arrow keys or the buttons below to navigate.</p>
+    </section>
+
+    <!-- Slide 2: Overview -->
+    <section class="slide" data-slide="2">
+      <h1>What This Hub Covers</h1>
+      <ul>
+        <li><strong>What</strong> – Types of cyber attacks (ransomware, phishing, DDoS, supply chain, etc.)</li>
+        <li><strong>Who</strong> – Threat actors: nation-state, criminals, hacktivists, insiders</li>
+        <li><strong>How</strong> – Attack vectors, techniques, and real-world examples</li>
+        <li><strong>Impact</strong> – Business disruption, data loss, financial and reputational damage</li>
+        <li><strong>Defence</strong> – Prevention, detection, response, and recovery</li>
+      </ul>
+    </section>
+
+    <!-- Slide 3: Attack Library – Famous Incidents -->
+    <section class="slide" data-slide="3">
+      <h1>Cyber Attack Library</h1>
+      <h2>Famous Incidents (1/2)</h2>
+      <div class="card">
+        <strong>WannaCry (2017)</strong> <span class="badge badge-critical">Critical</span><br>
+        Ransomware exploiting EternalBlue. Disrupted 150+ countries. Lazarus Group attributed.
+      </div>
+      <div class="card">
+        <strong>NotPetya (2017)</strong> <span class="badge badge-critical">Critical</span><br>
+        Supply-chain wiper via Ukrainian tax software. Billions in losses; many firms rebuilt IT.
+      </div>
+      <div class="card">
+        <strong>Stuxnet (2010)</strong> <span class="badge badge-critical">Critical</span><br>
+        Industrial sabotage of nuclear enrichment. Zero-days + removable media to air-gapped OT.
+      </div>
+    </section>
+
+    <!-- Slide 4: Attack Library – Famous Incidents 2 -->
+    <section class="slide" data-slide="4">
+      <h1>Cyber Attack Library</h1>
+      <h2>Famous Incidents (2/2)</h2>
+      <div class="card">
+        <strong>Equifax (2017)</strong> <span class="badge badge-critical">Critical</span><br>
+        Unpatched Apache Struts. 140M+ records exposed. Regulatory penalties.
+      </div>
+      <div class="card">
+        <strong>SolarWinds (2020)</strong> <span class="badge badge-critical">Critical</span><br>
+        Supply-chain compromise of build pipeline. Stealthy espionage across government and enterprise.
+      </div>
+      <div class="card">
+        <strong>Colonial Pipeline (2021)</strong> <span class="badge badge-critical">Critical</span><br>
+        Ransomware via compromised VPN (no MFA). Major fuel pipeline shutdown, emergency declarations.
+      </div>
+    </section>
+
+    <!-- Slide 5: Attack Library – More Incidents & Techniques -->
+    <section class="slide" data-slide="5">
+      <h1>Cyber Attack Library</h1>
+      <h2>More Incidents & Techniques</h2>
+      <div class="card">
+        <strong>Yahoo Mega Breaches (2013)</strong> – Billions of accounts; weak auth and legacy systems.
+      </div>
+      <div class="card">
+        <strong>Target POS (2013)</strong> – Third-party vendor pivot, memory-scraping malware on POS.
+      </div>
+      <div class="card">
+        <strong>Large-Scale DDoS on Banks (2012)</strong> – Botnet floods; online banking unavailable.
+      </div>
+    </section>
+
+    <!-- Slide 6: Attack Details – Key Lessons -->
+    <section class="slide" data-slide="6">
+      <h1>Key Lessons from Major Attacks</h1>
+      <div class="card">
+        <strong>WannaCry</strong> – Unpatched services → global incidents. Disable legacy protocols. Backups essential.
+      </div>
+      <div class="card">
+        <strong>NotPetya</strong> – Supply-chain software is a powerful compromise point. Ransomware-looking attacks can be wipers.
+      </div>
+      <div class="card">
+        <strong>SolarWinds</strong> – Build pipelines and signing keys are high-value targets. Monitor trusted updates.
+      </div>
+      <div class="card">
+        <strong>Colonial Pipeline</strong> – Single-factor remote access is a major risk for critical infrastructure.
+      </div>
+    </section>
+
+    <!-- Slide 7: Generic Attack Techniques -->
+    <section class="slide" data-slide="7">
+      <h1>Generic Attack Techniques</h1>
+      <div class="card">
+        <strong>SQL Injection</strong> – Unsafe queries; data disclosure, privilege escalation.
+      </div>
+      <div class="card">
+        <strong>XSS (Cross-Site Scripting)</strong> – Injected scripts; session hijacking, defacement.
+      </div>
+      <div class="card">
+        <strong>Phishing & Spear-Phishing</strong> – Deceptive messages; account takeover, malware entry.
+      </div>
+      <div class="card">
+        <strong>Credential Stuffing</strong> – Reused passwords from breaches; automated account takeover.
+      </div>
+      <div class="card">
+        <strong>Insider Threats</strong> – Misuse of legitimate access; data theft, sabotage.
+      </div>
+    </section>
+
+    <!-- Slide 8: Who & Why – Threat Actors -->
+    <section class="slide" data-slide="8">
+      <h1>Who Attacks and Why</h1>
+      <h2>Common Threat Actors</h2>
+      <ul>
+        <li><strong>Nation-state groups</strong> – Strategic, political, military goals</li>
+        <li><strong>Cybercriminal gangs</strong> – Organised crime, money at scale</li>
+        <li><strong>Ransomware affiliates</strong> – Ransomware-as-a-service operators</li>
+        <li><strong>Hacktivists</strong> – Political/social motivation, visibility</li>
+        <li><strong>Insiders</strong> – Employees, contractors misusing access</li>
+        <li><strong>Script kiddies</strong> – Ready-made tools, leaked exploits</li>
+      </ul>
+    </section>
+
+    <!-- Slide 9: Who & Why – Goals -->
+    <section class="slide" data-slide="9">
+      <h1>Who Attacks and Why</h1>
+      <h2>Typical Goals</h2>
+      <ul>
+        <li><strong>Financial gain</strong> – Extortion, fraud, theft of funds or data</li>
+        <li><strong>Espionage</strong> – IP, trade secrets, sensitive communications</li>
+        <li><strong>Disruption</strong> – Services offline, chaos, pressure</li>
+        <li><strong>Reputation damage</strong> – Leaks, defacement</li>
+        <li><strong>Physical impact</strong> – Industrial systems, energy, transport, healthcare</li>
+        <li><strong>Strategic influence</strong> – Public opinion, trust in institutions</li>
+      </ul>
+    </section>
+
+    <!-- Slide 10: Defence – Before -->
+    <section class="slide" data-slide="10">
+      <h1>How Organisations Defend</h1>
+      <h2>Before an Attack (Prevention)</h2>
+      <ul>
+        <li>Patch systems and applications</li>
+        <li>Enforce MFA and strong authentication</li>
+        <li>Least privilege for accounts and services</li>
+        <li>Segment networks</li>
+        <li>Email filtering and web protection</li>
+        <li>EDR/anti-malware, secure baselines</li>
+        <li>Staff training on phishing and social engineering</li>
+      </ul>
+    </section>
+
+    <!-- Slide 11: Defence – During & After -->
+    <section class="slide" data-slide="11">
+      <h1>How Organisations Defend</h1>
+      <h2>During an Attack (Detection & Response)</h2>
+      <ul>
+        <li>Monitor logs (endpoints, servers, identity, cloud)</li>
+        <li>SOC / central monitoring</li>
+        <li>Incident response runbooks</li>
+        <li>Isolate suspicious systems</li>
+        <li>Preserve evidence for forensics</li>
+        <li>Communicate with leadership, legal, stakeholders</li>
+      </ul>
+      <h2>After an Attack (Recovery & Learning)</h2>
+      <ul>
+        <li>Restore from clean backups</li>
+        <li>Rotate credentials, keys, tokens</li>
+        <li>Root-cause analysis, post-incident review</li>
+        <li>Improve controls, monitoring, training</li>
+      </ul>
+    </section>
+
+    <!-- Slide 12: Life of an Attack -->
+    <section class="slide" data-slide="12">
+      <h1>Life of a Cyber Attack</h1>
+      <ol>
+        <li><strong>Reconnaissance</strong> – Research targets, exposed systems, credentials</li>
+        <li><strong>Initial Access</strong> – Phishing, exploits, stolen passwords</li>
+        <li><strong>Persistence</strong> – Backdoors, scheduled tasks</li>
+        <li><strong>Privilege Escalation & Lateral Movement</strong> – Credentials, internal exploits</li>
+        <li><strong>Actions on Objectives</strong> – Data theft, encryption, disruption</li>
+        <li><strong>Detection, Containment & Eradication</strong> – Defenders respond</li>
+        <li><strong>Recovery & Improvement</strong> – Restore, strengthen, learn</li>
+      </ol>
+    </section>
+
+    <!-- Slide 13: Overall Risk Ranking -->
+    <section class="slide" data-slide="13">
+      <h1>Overall Risk Ranking Today</h1>
+      <table>
+        <thead>
+          <tr><th>Rank</th><th>Attack Type</th><th>Frequency</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Phishing & credential theft</td><td>Very high</td><td>Cheap, scales, bypasses tech controls</td></tr>
+          <tr><td>2</td><td>Ransomware & extortion</td><td>High</td><td>Industrialised, hits every sector</td></tr>
+          <tr><td>3</td><td>Business email compromise</td><td>High</td><td>Social engineering + weak processes</td></tr>
+          <tr><td>4</td><td>Web app & API exploitation</td><td>Medium–high</td><td>Lack of secure SDLC</td></tr>
+          <tr><td>5</td><td>Supply-chain compromises</td><td>Lower</td><td>One supplier → hundreds of targets</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Slide 14: Loss per Incident & Attacker Return -->
+    <section class="slide" data-slide="14">
+      <h1>Loss per Incident & Attacker Return</h1>
+      <h2>Loss per successful incident (illustrative)</h2>
+      <ol>
+        <li>Supply-chain compromise of core software</li>
+        <li>Ransomware on critical operations</li>
+        <li>Large-scale data breach</li>
+        <li>Business email compromise of finance</li>
+        <li>Targeted ICS/OT attack</li>
+      </ol>
+      <h2>Success vs loss “return” for attackers</h2>
+      <ul>
+        <li>Phishing + credential stuffing – low cost, automated</li>
+        <li>Ransomware with data theft – encryption + extortion</li>
+        <li>Fraud and BEC – minimal infrastructure</li>
+        <li>Cloud misconfiguration abuse – easy wins</li>
+      </ul>
+    </section>
+
+    <!-- Slide 15: Future 3–5 Year Projection -->
+    <section class="slide" data-slide="15">
+      <h1>Future 3–5 Year Projection</h1>
+      <table>
+        <thead>
+          <tr><th>Rank</th><th>Attack Type</th><th>Trend</th><th>Defender Focus</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Identity-centric attacks</td><td>↑↑</td><td>Phishing-resistant MFA, conditional access</td></tr>
+          <tr><td>2</td><td>Ransomware & double/triple extortion</td><td>↑</td><td>Backups, segmentation, EDR</td></tr>
+          <tr><td>3</td><td>Software supply-chain attacks</td><td>↑↑</td><td>SBOMs, dependency scanning</td></tr>
+          <tr><td>4</td><td>Cloud misconfiguration</td><td>↑</td><td>CSPM, automation</td></tr>
+          <tr><td>5</td><td>OT/ICS and critical infrastructure</td><td>↑</td><td>IT/OT segmentation, industrial monitoring</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Slide 16: FAQ -->
+    <section class="slide" data-slide="16">
+      <h1>Frequently Asked Questions</h1>
+      <h3>Vulnerability vs exploit vs attack?</h3>
+      <p>Vulnerability = weakness. Exploit = how it’s abused. Attack = campaign using exploits.</p>
+      <h3>Are all attacks highly technical?</h3>
+      <p>No. Many rely on people: phishing, social engineering. Culture and training matter.</p>
+      <h3>How can small orgs protect themselves?</h3>
+      <p>Patch, MFA, backups, awareness. Small improvements dramatically reduce risk.</p>
+      <h3>How often are attacks attributed?</h3>
+      <p>Often uncertain. Investigators use infrastructure, tooling, behaviour; attackers can fake these.</p>
+    </section>
+
+    <!-- Slide 17: Glossary -->
+    <section class="slide" data-slide="17">
+      <h1>Glossary</h1>
+      <dl style="display: grid; gap: 0.5rem;">
+        <dt>Malware</dt><dd>Malicious software to damage, disrupt, or gain access.</dd>
+        <dt>Ransomware</dt><dd>Encrypts data, demands payment to restore.</dd>
+        <dt>Phishing</dt><dd>Tricking people via deceptive messages.</dd>
+        <dt>DDoS</dt><dd>Overwhelming a service with traffic.</dd>
+        <dt>Zero-day</dt><dd>Unknown vulnerability, no patch yet.</dd>
+        <dt>Supply-chain attack</dt><dd>Compromising a supplier to reach many targets.</dd>
+        <dt>MITM</dt><dd>Intercepting/altering communication between two parties.</dd>
+        <dt>Incident response</dt><dd>Organised approach to detecting and handling incidents.</dd>
+        <dt>CIA triad</dt><dd>Confidentiality, Integrity, Availability.</dd>
+      </dl>
+    </section>
+
+    <!-- Slide 18: Thank You -->
+    <section class="slide" data-slide="18">
+      <h1>Thank You</h1>
+      <p class="subtitle">Cyber Attack Knowledge Hub</p>
+      <p style="margin-top: 2rem; font-size: 0.9rem;">This presentation is for educational purposes only and does not constitute formal legal, regulatory, or professional security advice. Always consult qualified experts for decisions affecting your organisation’s risk posture.</p>
+      <p style="margin-top: 1rem;"><a href="index.html" style="color: var(--accent-alt);">← Back to the full interactive hub</a></p>
+    </section>
+  </div>
+
+  <div class="nav-bar">
+    <button type="button" id="prevBtn" onclick="go(-1)">← Previous</button>
+    <span class="slide-num" id="slideNum">1 / 18</span>
+    <button type="button" id="nextBtn" onclick="go(1)">Next →</button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    let current = 0;
+
+    function show(i) {
+      if (i < 0) i = 0;
+      if (i >= slides.length) i = slides.length - 1;
+      current = i;
+      slides.forEach((s, j) => s.classList.toggle("active", j === current));
+      document.getElementById("slideNum").textContent = `${current + 1} / ${slides.length}`;
+      document.getElementById("prevBtn").disabled = current === 0;
+      document.getElementById("nextBtn").disabled = current === slides.length - 1;
+    }
+
+    function go(delta) {
+      show(current + delta);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") go(-1);
+      if (e.key === "ArrowRight") go(1);
+    });
+
+    show(0);
+  </script>
+</body>
+</html>

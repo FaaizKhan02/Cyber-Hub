@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cyber Attack Knowledge Hub — Learn Cyber Security from Zero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Cyber Attack Knowledge Hub – a modern, beginner-friendly guide to cyber attacks, threat actors, defence strategies, and incident response. 40+ curated attack entries.">
+  <meta name="keywords"
+    content="cybersecurity, cyber attacks, ransomware, phishing, DDoS, malware, threat actors, defence strategies, incident response">
+  <meta name="author" content="Cyber Attack Knowledge Hub">
+  <meta property="og:title" content="Cyber Attack Knowledge Hub">
+  <meta property="og:description"
+    content="A beginner-friendly guide to cyber attacks, threat actors, and defence strategies. 40+ curated real-world cases.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cyber Attack Knowledge Hub">
+  <meta name="twitter:description" content="Learn cyber security from zero. 40+ real-world attack cases explained.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="features.css">
+</head>
+
+<body>
+
+  <!-- ========== TOP NAV ========== -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-inner">
+      <div class="logo-group">
+        <img src="favicon.svg" alt="" class="logo-icon" width="28" height="28">
+        <span class="logo">CyberHub</span>
+      </div>
+
+      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav" class="main-nav">
+        <ul id="mainNavList">
+          <li><a href="#overview" class="nav-link active" data-target="overview" aria-current="page">Overview</a></li>
+          <li><a href="#attack-library" class="nav-link" data-target="attack-library">Attacks</a></li>
+          <li><a href="#actors-defenders" class="nav-link" data-target="actors-defenders">Who &amp; Why</a></li>
+          <li><a href="#defense" class="nav-link" data-target="defense">Defence</a></li>
+          <li><a href="#rankings" class="nav-link" data-target="rankings">Rankings</a></li>
+          <li><a href="#simulators" class="nav-link" data-target="simulators">Interactive</a></li>
+          <li><a href="#live-map" class="nav-link" data-target="live-map">Live View</a></li>
+          <li><a href="#incident-response" class="nav-link" data-target="incident-response">Lifecycle</a></li>
+          <li><a href="#engage" class="nav-link" data-target="engage">Contact</a></li>
+          <li><a href="#faq" class="nav-link" data-target="faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode"
+          title="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+        <kbd class="cmd-hint" id="cmdHint" title="Press Ctrl+K to search everything">⌘K</kbd>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== COMMAND PALETTE ========== -->
+  <div class="cmd-palette-overlay" id="cmdOverlay">
+    <div class="cmd-palette" role="dialog" aria-label="Command palette">
+      <div class="cmd-search-row">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input type="text" id="cmdInput" placeholder="Search attacks, sections, terms…" autocomplete="off">
+        <kbd>ESC</kbd>
+      </div>
+      <ul class="cmd-results" id="cmdResults"></ul>
+    </div>
+  </div>
+
+  <!-- ========== CANVAS BACKGROUND ========== -->
+  <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+  <main>
+    <!-- ======= OVERVIEW ======= -->
+    <section id="overview" class="page-section active-page">
+      <div class="hero-layout">
+        <div class="hero-text">
+          <div class="hero-badge">🛡️ Free &amp; Open Knowledge</div>
+          <h1>Understand Cyber Attacks<br><span class="gradient-text">from A to Z</span></h1>
+          <p class="hero-subtitle">
+            A modern, beginner-friendly knowledge hub explaining what cyber attacks are, who launches them,
+            how they work, what damage they cause, and how organisations defend and recover.
+          </p>
+
+          <div class="search-block">
+            <label for="attackSearch" class="search-label">Search the Attack Library</label>
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="attackSearch" placeholder="WannaCry, phishing, DDoS, SQL injection, Stuxnet..."
+                aria-label="Search attacks" autocomplete="off">
+            </div>
+            <p class="search-help">Results in the Attacks page update as you type and combine with type filters.</p>
+
+            <label for="roleSelect" class="search-label" style="margin-top: 15px;">Personalise Your Experience</label>
+            <select id="roleSelect" class="feedback-input" style="width: 100%; max-width: 300px; margin-bottom: 10px;">
+              <option value="all">Everyone / General</option>
+              <option value="business">Business Leader / Executive</option>
+              <option value="developer">Software Engineer / Dev</option>
+              <option value="it">IT / Operations Admin</option>
+            </select>
+            <p class="search-help">Select your role to filter attacks and defences tailored specifically to what you
+              need to know.</p>
+
+          </div>
+
+          <div class="hero-cta">
+            <button type="button" class="primary-cta pulse-glow" data-go-to="attack-library">
+              Explore the attack library
+            </button>
+            <a href="slides.html" class="ghost-cta" target="_blank" rel="noopener">View slides</a>
+            <button type="button" class="ghost-cta" data-go-to="engage">Ask the assistant</button>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card" data-tilt>
+            <div class="stat-icon">📋</div>
+            <div class="stat-label">Attack entries</div>
+            <div class="stat-value" id="statAttackCount">0</div>
+            <div class="stat-footnote">Curated real-world cases &amp; techniques</div>
+          </div>
+          <div class="stat-card" data-tilt>
+            <div class="stat-icon">📂</div>
+            <div class="stat-label">Distinct categories</div>
+            <div class="stat-value" id="statCategoryCount">0</div>
+            <div class="stat-footnote">From ransomware to insider threats</div>
+          </div>
+          <div class="stat-card" data-tilt>
+            <div class="stat-icon">🎯</div>
+            <div class="stat-label">Learning path</div>
+            <div class="stat-value" id="statFromZero">0 → 💡</div>
+            <div class="stat-footnote">Designed to take you from beginner to confident</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= ATTACK LIBRARY ======= -->
+    <section id="attack-library" class="page-section">
+      <header class="section-header">
+        <h2>Cyber Attack Library</h2>
+        <p>Browse real incidents and core techniques. Combine search and type filters to focus on what matters to you.
+        </p>
+      </header>
+
+      <div class="library-controls">
+        <div class="filter-chips" id="typeFilterChips">
+          <button class="chip active" data-type="All">All</button>
+          <button class="chip" data-type="Malware">🦠 Malware</button>
+          <button class="chip" data-type="Ransomware">💰 Ransomware</button>
+          <button class="chip" data-type="Phishing">🎣 Phishing</button>
+          <button class="chip" data-type="Web Application">🌐 Web App</button>
+          <button class="chip" data-type="DDoS">💥 DDoS</button>
+          <button class="chip" data-type="Supply Chain">🔗 Supply Chain</button>
+          <button class="chip" data-type="Insider">👤 Insider</button>
+          <button class="chip" data-type="Espionage">🕵️ Espionage</button>
+        </div>
+        <p class="result-count" id="attackResultCount">Showing 0 attacks</p>
+      </div>
+
+      <div id="attackGrid" class="attack-grid">
+        <!-- Cards rendered via JS -->
+      </div>
+    </section>
+
+    <!-- ======= ACTORS & DEFENDERS ======= -->
+    <section id="actors-defenders" class="page-section">
+      <header class="section-header">
+        <h2>Who Attacks and Why</h2>
+        <p>Understanding the people behind attacks and their motivations is key to building realistic defences.</p>
+      </header>
+
+      <div class="two-column">
+        <div class="card glass-card">
+          <h3>Common threat actors</h3>
+          <ul class="bullet-list icon-list">
+            <li><span class="li-icon">🏛️</span><strong>Nation‑state groups</strong> – well-funded teams pursuing
+              strategic, political or military goals.</li>
+            <li><span class="li-icon">💰</span><strong>Cybercriminal gangs</strong> – organised crime focused on making
+              money at scale.</li>
+            <li><span class="li-icon">🔐</span><strong>Ransomware affiliates</strong> – semi‑independent operators using
+              "ransomware as a service".</li>
+            <li><span class="li-icon">✊</span><strong>Hacktivists</strong> – politically or socially motivated groups
+              seeking visibility and impact.</li>
+            <li><span class="li-icon">👤</span><strong>Insiders</strong> – employees, contractors, or partners misusing
+              legitimate access.</li>
+            <li><span class="li-icon">🧒</span><strong>Script kiddies</strong> – individuals using ready‑made tools and
+              leaked exploits.</li>
+          </ul>
+        </div>
+        <div class="card glass-card">
+          <h3>Typical goals</h3>
+          <ul class="bullet-list icon-list">
+            <li><span class="li-icon">💵</span><strong>Financial gain</strong> – extortion, fraud, theft of funds or
+              monetisable data.</li>
+            <li><span class="li-icon">🔍</span><strong>Espionage</strong> – stealing intellectual property, trade
+              secrets, or sensitive communications.</li>
+            <li><span class="li-icon">⚡</span><strong>Disruption</strong> – taking services offline to cause chaos or
+              pressure decision‑makers.</li>
+            <li><span class="li-icon">📰</span><strong>Reputation damage</strong> – leaking embarrassing data or
+              defacing websites.</li>
+            <li><span class="li-icon">🏭</span><strong>Physical impact</strong> – targeting industrial systems, energy,
+              transport, or healthcare.</li>
+            <li><span class="li-icon">🗳️</span><strong>Strategic influence</strong> – shaping public opinion or
+              undermining trust in institutions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= DEFENCE ======= -->
+    <section id="defense" class="page-section">
+      <header class="section-header">
+        <h2>How Organisations Defend</h2>
+        <p>Defence is a continuous cycle of prevention, detection, response, and learning.</p>
+      </header>
+
+      <div class="three-column stacked-on-mobile">
+        <div class="card glass-card defence-card">
+          <div class="defence-phase-badge before">Before</div>
+          <h3>Prevention</h3>
+          <ul class="bullet-list">
+            <li>Keep systems and applications patched and up to date.</li>
+            <li>Enforce strong authentication, ideally multi‑factor authentication (MFA).</li>
+            <li>Use the principle of least privilege for accounts and services.</li>
+            <li>Segment networks so one breach does not expose everything.</li>
+            <li>Deploy email filtering and web protection against phishing.</li>
+            <li>Harden endpoints with EDR/anti‑malware and secure configuration baselines.</li>
+            <li>Train staff on phishing, social engineering, and safe data handling.</li>
+          </ul>
+        </div>
+        <div class="card glass-card defence-card">
+          <div class="defence-phase-badge during">During</div>
+          <h3>Detection &amp; Response</h3>
+          <ul class="bullet-list">
+            <li>Monitor logs across endpoints, servers, identity, and cloud platforms.</li>
+            <li>Use a SOC or central monitoring to correlate alerts.</li>
+            <li>Have clear incident response runbooks for different attack types.</li>
+            <li>Isolate suspicious systems quickly to limit spread.</li>
+            <li>Preserve evidence for forensics while containing the threat.</li>
+            <li>Communicate early with leadership, legal, and affected stakeholders.</li>
+          </ul>
+        </div>
+        <div class="card glass-card defence-card">
+          <div class="defence-phase-badge after">After</div>
+          <h3>Recovery &amp; Learning</h3>
+          <ul class="bullet-list">
+            <li>Restore from clean, tested backups and verify integrity.</li>
+            <li>Rotate credentials, keys, and tokens that may be exposed.</li>
+            <li>Conduct root‑cause analysis and a formal post‑incident review.</li>
+            <li>Improve controls, monitoring, and training based on lessons learned.</li>
+            <li>Update playbooks, asset inventories, and recovery procedures.</li>
+            <li>Share anonymised insights with trusted communities where possible.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= INCIDENT RESPONSE LIFECYCLE ======= -->
+    <section id="incident-response" class="page-section">
+      <header class="section-header">
+        <h2>Life of a Cyber Attack</h2>
+        <p>Most attacks follow a recognisable lifecycle. Mapping activity to these stages helps defenders detect and
+          respond earlier.</p>
+      </header>
+
+      <ol class="attack-life-list">
+        <li>
+          <div class="life-step-number">01</div>
+          <h3>Reconnaissance</h3>
+          <p>Attackers research targets, identify exposed systems, leaked credentials, and potential weak points.</p>
+        </li>
+        <li>
+          <div class="life-step-number">02</div>
+          <h3>Initial Access</h3>
+          <p>First foothold is gained, for example through phishing, exploiting a vulnerability, or abusing stolen
+            passwords.</p>
+        </li>
+        <li>
+          <div class="life-step-number">03</div>
+          <h3>Persistence</h3>
+          <p>Attackers install backdoors, scheduled tasks, or modify configurations to survive reboots and basic
+            cleanup.</p>
+        </li>
+        <li>
+          <div class="life-step-number">04</div>
+          <h3>Privilege Escalation &amp; Lateral Movement</h3>
+          <p>They steal credentials, exploit internal flaws, and move between systems to reach high‑value assets.</p>
+        </li>
+        <li>
+          <div class="life-step-number">05</div>
+          <h3>Actions on Objectives</h3>
+          <p>Actual goals are executed: data theft, encryption for ransom, service disruption, or manipulation of
+            systems.</p>
+        </li>
+        <li>
+          <div class="life-step-number">06</div>
+          <h3>Detection, Containment &amp; Eradication</h3>
+          <p>Defenders identify suspicious activity, isolate affected systems, remove malware, and close exploited
+            paths.</p>
+        </li>
+        <li>
+          <div class="life-step-number">07</div>
+          <h3>Recovery &amp; Improvement</h3>
+          <p>Systems are restored, controls are strengthened, and the organisation improves its resilience for the next
+            attempt.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ======= RANKINGS ======= -->
+    <section id="rankings" class="page-section">
+      <header class="section-header">
+        <h2>Rankings &amp; Future Outlook</h2>
+        <p>These rankings reflect common industry understanding, not precise global statistics. They help prioritise
+          where to focus limited time and budget.</p>
+      </header>
+
+      <div class="card glass-card">
+        <h3>Overall risk ranking today</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Attack type</th>
+                <th>Frequency</th>
+                <th>Typical business impact</th>
+                <th>Attacker success vs defence</th>
+                <th>Financial loss</th>
+                <th>Why it ranks here</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Phishing &amp; credential theft</td>
+                <td>Very high</td>
+                <td>Account takeover, data exposure, ransomware entry</td>
+                <td>High – humans remain easy to trick</td>
+                <td>High but variable</td>
+                <td>Cheap to run, scales globally, bypasses many technical controls.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ransomware &amp; extortion</td>
+                <td>High</td>
+                <td>Full service outage, data loss, reputational and legal impact</td>
+                <td>Medium–high</td>
+                <td>Very high per incident</td>
+                <td>Industrialised ecosystem, targets backups and restores, hits every sector.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Business email compromise (BEC)</td>
+                <td>High</td>
+                <td>Fraudulent payments, supplier fraud, long investigations</td>
+                <td>Medium–high</td>
+                <td>High</td>
+                <td>Combines social engineering with weak processes around payments and approvals.</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Web app &amp; API exploitation</td>
+                <td>Medium–high</td>
+                <td>Data breaches, service outages, regulatory exposure</td>
+                <td>Medium</td>
+                <td>High for data‑heavy organisations</td>
+                <td>Many organisations still lack secure SDLC and basic testing.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Supply‑chain compromises</td>
+                <td>Lower volume</td>
+                <td>Wide blast radius across many organisations at once</td>
+                <td>Medium</td>
+                <td>Extremely high in worst cases</td>
+                <td>Compromise one supplier to reach hundreds of downstream targets.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="two-column stacked-on-mobile" style="margin-top:18px">
+        <div class="card glass-card">
+          <h3>Loss per successful incident</h3>
+          <ol class="bullet-list">
+            <li><strong>Supply‑chain compromise of core software</strong> – can impact thousands of customers and
+              critical infrastructure.</li>
+            <li><strong>Ransomware on critical operations</strong> – halts production, healthcare, or logistics for days
+              or weeks.</li>
+            <li><strong>Large‑scale data breach</strong> – regulatory fines, notification, identity protection, and
+              brand damage.</li>
+            <li><strong>Business email compromise of finance</strong> – direct theft through fraudulent transfers.</li>
+            <li><strong>Targeted industrial control (ICS/OT) attack</strong> – physical damage, safety impacts, long
+              recovery cycles.</li>
+          </ol>
+        </div>
+        <div class="card glass-card">
+          <h3>Success vs loss "return" for attackers</h3>
+          <ul class="bullet-list">
+            <li><strong>Phishing + credential stuffing</strong> – low cost and highly automated; even a small success
+              rate is profitable.</li>
+            <li><strong>Ransomware with data theft</strong> – combines encryption with extortion, increasing pressure to
+              pay.</li>
+            <li><strong>Fraud and BEC</strong> – minimal infrastructure required; relies on social engineering and poor
+              process controls.</li>
+            <li><strong>Cloud misconfiguration abuse</strong> – easy wins where security settings are left open by
+              mistake.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card glass-card" style="margin-top:18px">
+        <h3>Future 3–5 year projection</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Projected rank</th>
+                <th>Attack type</th>
+                <th>Trend</th>
+                <th>Main reasons</th>
+                <th>Defender focus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Identity‑centric attacks</td>
+                <td>↑↑</td>
+                <td>Everything depends on identity; more single sign‑on and cloud apps raise the stakes.</td>
+                <td>Strong identity protection, phishing‑resistant MFA, conditional access, user training.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Ransomware &amp; double/triple extortion</td>
+                <td>↑</td>
+                <td>Criminal ecosystems adapt quickly and keep innovating on pressure tactics.</td>
+                <td>Backups, segmentation, EDR, incident response readiness.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Software supply‑chain attacks</td>
+                <td>↑↑</td>
+                <td>Complex dependency chains, open‑source reuse, and third‑party services increase leverage.</td>
+                <td>SBOMs, dependency scanning, supplier assurance, secure build pipelines.</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Cloud misconfiguration and abuse</td>
+                <td>↑</td>
+                <td>Rapid cloud adoption outpaces secure design and operations.</td>
+                <td>Cloud security posture management, automation.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Attacks on OT/ICS and critical infrastructure</td>
+                <td>↑</td>
+                <td>IT/OT convergence, legacy systems, and geopolitical tension.</td>
+                <td>OT segmentation, industrial protocol monitoring.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= INTERACTIVE SIMULATORS ======= -->
+    <section id="simulators" class="page-section">
+      <header class="section-header">
+        <h2>Interactive Learning Zone</h2>
+        <p>Test your skills against real-world scenarios and discover if your own data has been exposed in past
+          breaches.</p>
+      </header>
+
+      <div class="two-column stacked-on-mobile">
+        <!-- Phishing Simulator -->
+        <div class="card glass-card phishing-sim-card">
+          <h3>🎣 Phishing Simulator</h3>
+          <p class="search-help">Can you spot the fake email? Test your ability to identify malicious messages.</p>
+
+          <div id="phishingGame" class="phishing-game-container">
+            <div id="phishingScreens">
+              <div class="phishing-email-mockup" id="phishingEmailBody">
+                <!-- Example Phishing Content injected via JS -->
+              </div>
+            </div>
+
+            <div class="phishing-controls" id="phishingControls">
+              <button class="primary-cta" id="btnIsReal">Looks Legitimate</button>
+              <button class="ghost-cta" style="border-color: var(--danger); color: var(--danger)" id="btnIsFake">Report
+                Phishing</button>
+            </div>
+
+            <div id="phishingFeedback" class="phishing-feedback hidden">
+              <h4 id="phishResultTitle">Result</h4>
+              <p id="phishResultDesc">Description of flags.</p>
+              <button class="primary-cta small" id="btnNextPhish">Next Scenario</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Am I Pwned Checker -->
+        <div class="card glass-card">
+          <h3>🔐 Am I Pwned? Integration (Demonstration)</h3>
+          <p class="search-help">Enter an email to simulate a check against historical data breaches (e.g., LinkedIn,
+            Yahoo, Equifax).</p>
+
+          <div class="pwned-form" style="margin-top: 20px;">
+            <input type="email" id="pwnedInput" class="feedback-input" placeholder="someone@example.com"
+              style="width: 100%; margin-bottom: 10px;">
+            <button class="primary-cta" id="btnCheckPwned" style="width: 100%;">Check for Exposures</button>
+          </div>
+
+          <div id="pwnedResults" class="pwned-results hidden" style="margin-top: 15px;">
+            <!-- Filled via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= LIVE MAP ======= -->
+    <section id="live-map" class="page-section">
+      <header class="section-header">
+        <h2>Live Cyber Attack Map</h2>
+        <p>This dynamic view shows live simulated cyber attacks happening globally, tracking their origin and targeted
+          regions in real-time.</p>
+      </header>
+
+      <div class="two-column live-layout stacked-on-mobile">
+        <div class="card glass-card">
+          <h3>Real-Time Global Threat Monitor</h3>
+          <p class="map-subtitle">Tracking active cyber security incidents globally.</p>
+          <div class="world-map-container" style="position: relative; overflow: hidden; height: 320px;">
+            <canvas id="worldMapCanvas" style="position: absolute; top:0; left:0; width: 100%; height: 100%;"></canvas>
+            <div id="neonMapOverlay"
+              style="position: absolute; top:0; left:0; width: 100%; height: 100%; pointer-events: none;"></div>
+          </div>
+          <div class="map-legend">
+            <span class="legend-dot origin-dot"></span> Origin
+            <span class="legend-dot affected-dot"></span> Affected
+            <span style="margin-left:8px;font-size:0.8rem;color:var(--text-muted);">Real GeoJSON coordinates rendered in
+              actual time.</span>
+          </div>
+        </div>
+        <p class="map-selected">Selected attack: <span id="mapSelectedAttack">None yet</span></p>
+      </div>
+
+      <div class="card glass-card live-feed-card">
+        <h3>Live Active Attack Feed</h3>
+        <p class="live-status">Streaming real-time incident intercepts and attack vectors.</p>
+        <div class="live-attack-info">
+          <div class="live-attack-title" id="liveAttackTitle">Loading…</div>
+          <div class="live-attack-route" id="liveAttackRoute"></div>
+          <div class="live-attack-detail" id="liveAttackDetail"></div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ======= ENGAGE ======= -->
+    <section id="engage" class="page-section">
+      <header class="section-header">
+        <h2>Engage, Ask, and Reflect</h2>
+        <p>Share feedback on this learning hub and chat with our AI knowledge assistant that pulls from the same attack
+          database.</p>
+      </header>
+
+      <div class="two-column stacked-on-mobile">
+        <!-- Feedback form -->
+        <div class="card glass-card">
+          <h3>📝 Feedback</h3>
+          <form id="feedbackForm" class="feedback-form">
+            <div class="field-group">
+              <label for="fbName">Name (optional)</label>
+              <input type="text" id="fbName" name="name" autocomplete="name">
+            </div>
+            <div class="field-group">
+              <label for="fbEmail">Email (optional)</label>
+              <input type="email" id="fbEmail" name="email" autocomplete="email">
+            </div>
+            <div class="field-group">
+              <label for="fbRole">Role</label>
+              <select id="fbRole" name="role">
+                <option value="student">Student</option>
+                <option value="it-security">IT / Security professional</option>
+                <option value="management">Management / leadership</option>
+                <option value="general">General / other</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="fbRating">Overall rating</label>
+              <div class="star-rating" id="starRating">
+                <button type="button" class="star" data-value="1">★</button>
+                <button type="button" class="star" data-value="2">★</button>
+                <button type="button" class="star" data-value="3">★</button>
+                <button type="button" class="star" data-value="4">★</button>
+                <button type="button" class="star active" data-value="5">★</button>
+              </div>
+              <input type="hidden" id="fbRating" name="rating" value="5">
+            </div>
+            <div class="field-group">
+              <label for="fbText">Feedback</label>
+              <textarea id="fbText" name="feedback" rows="4"
+                placeholder="What was most helpful? What could be clearer?"></textarea>
+            </div>
+            <button type="submit" class="primary-cta small">Submit feedback</button>
+            <p id="feedbackStatus" class="feedback-status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <!-- Chat assistant -->
+        <div class="card glass-card chat-card">
+          <div class="chat-header">
+            <h3>🤖 AI Knowledge Assistant</h3>
+            <div class="support-status">
+              <span class="status-dot online"></span>
+              <span>AI assistant: Online</span>
+            </div>
+          </div>
+          <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+          <div class="chat-input-row">
+            <input type="text" id="chatInput" placeholder="Ask about ransomware, phishing, or how to defend…"
+              autocomplete="off">
+            <button type="button" id="chatSend" class="primary-cta small">Send</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= FAQ ======= -->
+    <section id="faq" class="page-section">
+      <header class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Clarifying common concepts and concerns when first learning about cyber attacks.</p>
+      </header>
+
+      <div class="card glass-card faq-card">
+        <details open>
+          <summary>What is the difference between a vulnerability, an exploit, and an attack?</summary>
+          <p>A <strong>vulnerability</strong> is a weakness in a system or process. An <strong>exploit</strong> is the
+            specific way that weakness is abused. An <strong>attack</strong> is the overall campaign or action that uses
+            one or more exploits to achieve a goal, such as stealing data or encrypting systems.</p>
+        </details>
+        <details>
+          <summary>Are all cyber attacks highly technical?</summary>
+          <p>No. Many successful attacks rely more on <strong>people</strong> than technology: phishing emails, fake
+            login pages, social engineering phone calls, or tricking someone into changing payment details. Technical
+            defences matter, but culture, training, and process controls are just as important.</p>
+        </details>
+        <details>
+          <summary>How can small organisations with low budget protect themselves?</summary>
+          <p>Focus on a few high‑value basics: keep devices patched, use reputable cloud services, turn on MFA wherever
+            possible, back up critical data, and practise what to do if something goes wrong.</p>
+        </details>
+        <details>
+          <summary>How often are attacks properly attributed to specific groups or countries?</summary>
+          <p>Attribution is difficult and often uncertain. Some campaigns are publicly linked to particular groups or
+            states, but many incidents are never formally attributed. Investigators look at infrastructure, tooling,
+            language, targets, and behaviour, but attackers can reuse and fake these signals.</p>
+        </details>
+        <details>
+          <summary>Where can I learn more after this hub?</summary>
+          <p>Good next steps include vendor neutral resources, national cyber security centres, and community projects
+            summarising real incidents. Look for material that explains ideas in plain language and uses real‑world
+            examples.</p>
+        </details>
+      </div>
+
+      <section id="glossary" class="sub-section">
+        <h3>Glossary</h3>
+        <dl class="glossary">
+          <dt>Malware</dt>
+          <dd>Malicious software designed to damage, disrupt, or gain unauthorised access to systems.</dd>
+          <dt>Ransomware</dt>
+          <dd>Malware that encrypts data or locks systems, demanding payment to restore access.</dd>
+          <dt>Phishing</dt>
+          <dd>Tricking people into revealing information or performing actions via deceptive messages.</dd>
+          <dt>DDoS (Distributed Denial of Service)</dt>
+          <dd>Overwhelming a service with traffic from many sources so legitimate users cannot access it.</dd>
+          <dt>Zero‑day</dt>
+          <dd>A vulnerability that is unknown to the vendor and has no official patch at the time of exploitation.</dd>
+          <dt>Supply‑chain attack</dt>
+          <dd>Compromising a trusted supplier or component to reach many downstream organisations.</dd>
+          <dt>MITM (Man‑in‑the‑Middle)</dt>
+          <dd>Intercepting and potentially altering communication between two parties without their knowledge.</dd>
+          <dt>Incident response</dt>
+          <dd>The organised approach to detecting, handling, and learning from security incidents.</dd>
+          <dt>CIA triad</dt>
+          <dd>Core security objectives: <strong>Confidentiality</strong>, <strong>Integrity</strong>, and
+            <strong>Availability</strong> of information and systems.
+          </dd>
+        </dl>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="favicon.svg" alt="" width="22" height="22">
+        <span>Cyber Attack Knowledge Hub</span>
+      </div>
+      <p>This site is for educational purposes only and does not constitute formal legal, regulatory, or professional
+        security advice. Always consult qualified experts.</p>
+
+      <div class="footer-creator">
+        <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;">
+          <strong>Created by:</strong> Faaiz Khan<br>
+          <span style="display: inline-flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=khanfaaiz940@gmail.com" target="_blank"
+              rel="noopener"
+              style="display: inline-flex; align-items: center; gap: 5px; color: var(--text); background: var(--surface-light); padding: 4px 10px; border-radius: 4px; text-decoration: none; border: 1px solid var(--border);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+              </svg>
+              Gmail
+            </a>
+            <a href="https://github.com/FaaizKhan02" target="_blank" rel="noopener"
+              style="display: inline-flex; align-items: center; gap: 5px; color: var(--text); background: var(--surface-light); padding: 4px 10px; border-radius: 4px; text-decoration: none; border: 1px solid var(--border);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/faaizkhancyber" target="_blank" rel="noopener"
+              style="display: inline-flex; align-items: center; gap: 5px; color: var(--text); background: var(--surface-light); padding: 4px 10px; border-radius: 4px; text-decoration: none; border: 1px solid var(--border);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              LinkedIn
+            </a>
+            <a href="https://wa.me/923121818315" target="_blank" rel="noopener"
+              style="display: inline-flex; align-items: center; gap: 5px; color: var(--text); background: var(--surface-light); padding: 4px 10px; border-radius: 4px; text-decoration: none; border: 1px solid var(--border);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+              </svg>
+              WhatsApp
+            </a>
+          </span>
+        </p>
+      </div>
+
+      <div class="footer-links" style="margin-top: 20px;">
+        <a href="#overview" data-target="overview" class="nav-link">Overview</a>
+        <a href="#attack-library" data-target="attack-library" class="nav-link">Attacks</a>
+        <a href="#defense" data-target="defense" class="nav-link">Defence</a>
+        <a href="#faq" data-target="faq" class="nav-link">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
+
+  <script src="features.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+
+</html>
+```

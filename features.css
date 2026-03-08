@@ -1,0 +1,129 @@
+/* Simulator specific styles */
+.phishing-game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    background: var(--bg-input);
+    border-radius: var(--radius-md);
+    padding: 15px;
+    border: 1px solid rgba(148, 163, 255, 0.2);
+}
+
+.phishing-email-mockup {
+    background: #fff;
+    color: #333;
+    padding: 15px;
+    border-radius: var(--radius-sm);
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+}
+
+.phish-sender {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.phish-subject {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    color: #222;
+}
+
+.phish-body {
+    line-height: 1.4;
+    color: #222;
+}
+
+.phish-body a {
+    color: #0066cc;
+    text-decoration: underline;
+    pointer-events: none;
+}
+
+.phishing-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.phishing-controls button {
+    flex: 1;
+}
+
+.phishing-feedback {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 7, 20, 0.95);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    z-index: 10;
+}
+
+.phishing-feedback h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.phishing-feedback p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.pwned-item {
+    background: rgba(255, 75, 106, 0.1);
+    border-left: 3px solid var(--danger);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.pwned-item h4 {
+    margin: 0 0 5px;
+    font-weight: bold;
+    color: var(--danger);
+}
+
+.pwned-item p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.pwned-safe {
+    background: rgba(58, 220, 130, 0.1);
+    border-left: 3px solid var(--success);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: var(--success);
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(148, 163, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--accent);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
