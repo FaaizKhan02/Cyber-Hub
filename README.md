@@ -53,3 +53,6 @@
 Creator: Faaiz Khan ,
 Connect: LinkedIn | GitHub | Email ,
 Disclaimer: This site is for educational purposes only.
+----------------------------------------------------------------------------------------------------------------------------
+-You can also visit the live site on vercel by link:
+cyber-hub-web.vercel.app
