@@ -39,12 +39,10 @@
    ```bash
    git clone https://github.com/FaaizKhan02/Cyber-Hub.git
 
-   -then
-npm install
-and 
-npm start
--Now 
-Open http://localhost:3000 in your browser.
+   npm install
+   npm start
+   Open http://localhost:3000 in your browser.
+
 ---------------------------------------------------------------------------------------------------------------------------
 🤝 Contact
 Creator: Faaiz Khan
