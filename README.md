@@ -54,5 +54,6 @@ Creator: Faaiz Khan ,
 Connect: LinkedIn | GitHub | Email ,
 Disclaimer: This site is for educational purposes only.
 ----------------------------------------------------------------------------------------------------------------------------
--You can also visit the live site on vercel by link:
-cyber-hub-web.vercel.app
+**You can also visit the live site on Netlify.com by link:**
+ ```bash
+https://69af1e66e327a229fd3634f0--astounding-tulumba-e52ca2.netlify.app/
